@@ -1,0 +1,163 @@
+%\documentclass[CJK]{beamer}
+\documentclass[smaller]{beamer}
+
+\usepackage{amssymb}
+\usepackage{latexsym,amssymb,amsmath,amsbsy,amsopn,amstext,color,multicol}
+%\usepackage{booktabs}
+\usepackage{upgreek}
+\usepackage{graphicx,wrapfig,fancybox,watermark,picins}
+\usepackage{pgf,pgfarrows,pgfnodes,pgfautomata,pgfheaps,pgfshade}
+\usepackage{graphics}
+\usepackage{movie15}
+\usepackage{hyperref}
+% reference entry
+\usepackage{bibentry, natbib}
+
+\usefonttheme[professionalfonts]{serif}
+
+%\usepackage{CJK}
+%\usepackage{beamerthemeBerkeley}
+%\usepackage{beamerthemeshadow}
+%\usepackage{beamerthemeclassic}
+%\usepackage{beamerthemeSingapore}
+\usepackage[red,numbers]{beamerthemeHongKong}
+
+\hypersetup{pdfpagemode=FullScreen}
+
+\begin{document}
+%\begin{CJK*}{GBK}{kai}
+
+% reference style
+\bibliographystyle{ieeetr} 
+%reference lib
+\nobibliography{refs}
+
+\title[Tutorial 4]{Tutorial 4}
+\author[COMP210]{Qu Xiaofeng}
+\institute{COMP210\\Discrete Structure}
+\date{\today}
+\frame{\titlepage}
+
+
+\section*{Table of Contents}
+\frame {
+\frametitle{\secname}
+\tableofcontents
+}
+
+\AtBeginSubsection[] {
+\frame<handout:0> {
+\frametitle{Outline}
+\tableofcontents[current,currentsubsection]
+}
+}
+
+\section{Problems}
+
+\subsection{Problem 1.4}
+\begin{frame}[c]
+  \frametitle{\subsecname}
+The statement is true.
+\begin{align*}
+X \cap (Y-Z) 	&= (X \cap Y) - (X \cap Z)
+\end{align*}
+\pause
+RHS:
+\begin{align*}
+(X \cap Y) - (X \cap Z)
+			&= (X \cap Y) \cap \overline{(X \cap Z)}\\
+			&= (X \cap Y) \cap (\overline{X} \cup \overline{Z})\\
+			&= Y \cap (X \cap (\overline{X} \cup \overline{Z}))\\
+			&= Y \cap (X \cap \overline{Z})
+\end{align*}
+\pause
+LHS:
+\begin{align*}
+X \cap (Y-Z) 	&= X \cap Y \cap \overline{Z}
+\end{align*}
+\end{frame}
+
+\subsection{Problem 2}
+\begin{frame}[c]
+  \frametitle{\subsecname}
+\begin{itemize}[<+-| alert@+>]
+\item Assume the conclusion is false, i.e., no two bags have the same number of coins.
+\item Let $x_i, i=1,\cdots,9$ be the numbers of coins in the $i^{th}$ bag.\\By hypothesis, we have 
+\[
+\bigg\{ \begin{array}{l}x_i \geq 1, i=1,\cdots,9\\ \sum_{i=1}^n x_i = 40\end{array}\bigg\}
+\]
+\item By negation of the conclusion we have $x_i \ne x_j, \forall i \ne j, i,j=1,\cdots , 9$.
+\item We reorder the bags, s.t. the numbers of coins contained follow acending order, namely, $ x_i < x_j,\ if\ i<j$
+\item Then $x_1 \geq 1, x_2 \geq 2, x_3 \geq 3, \cdots, x_9 \geq 9$
+\begin{align*}
+\sum_{i=1}^{9}x_i 	&\geq 45 >40
+\end{align*}
+\item contradition here!
+\item then the original statement is correct.
+\end{itemize}
+\end{frame}
+
+\subsection{Problem 4.1}
+\begin{frame}[c]
+  \frametitle{\subsecname}
+\begin{itemize}[<+-| alert@+>]
+\item The statement is true
+\item Prove by contradiction 
+\item the negation of the original statement $ \forall i,\ s_i > A$
+\item then\[\frac{s_1 + \cdots + s_n}{n} > A\]
+\item contradition
+\item then the original statement is true
+\end{itemize}
+\end{frame}
+
+\subsection{Problem 7}
+\begin{frame}[c]
+  \frametitle{\subsecname \  direct proof}
+\begin{align*}
+\frac{1}{(2n-1)(2n+1)} 	&= \bigg( \frac{1}{2n-1} - \frac{1}{2n+1}\bigg) \cdot \frac{1}{2}
+\end{align*}
+\pause
+\begin{align*}
+\sum_{i=1}^{n}\frac{1}{(2i-1)(2i+1)} 
+				&= \sum_{i=1}^{n}\bigg(\frac{1}{2i-1}-\frac{1}{2i+1}\bigg) \cdot \frac{1}{2}\\
+				&= \frac{1}{2} \cdot \bigg( 1 - \frac{1}{2n+1}\bigg)\\
+				&= \frac{n}{2n+1}
+\end{align*}
+
+\end{frame}
+
+\begin{frame}[c]
+  \frametitle{\subsecname \  induction}
+Basis step: for $n = 1\ $ $\ \frac{1}{1\cdot 3} = \frac{1}{3} = \frac{1}{2\cdot1+1}$\\
+\pause
+Induction step, assume the statment is true for $n=k$\\
+for $n = k+1$
+\pause
+\begin{align*}
+\sum_{i=1}^{k+1}\frac{1}{(2i-1)(2i+1)} 
+				&= \sum_{i=1}^{k}\bigg(\frac{1}{2i-1}-\frac{1}{2i+1}\bigg)
+				 - \bigg(\frac{1}{2k+1}-\frac{1}{2k+3}\bigg)\\
+				&= \frac{k}{2k+1} + \bigg(\frac{1}{2k+1}-\frac{1}{2k+3}\bigg)\\
+				&= \frac{2k^2+3k+1}{(2k+1)(2k+3)}\\
+				&= \frac{k+1}{2k+3} = \frac{(k+1)}{2(k+1)+1}
+\end{align*}
+\pause
+By the principle of math induction, the statement is true.
+\end{frame}
+
+
+
+\subsection{Q \& A}
+
+\begin{frame}[c]
+  \frametitle{\subsecname}
+  \begin{center}
+    \Huge{Questions about the problems?}
+    \end{center}
+\end{frame}
+
+%\end{CJK*}
+\end{document}
+
+
+
