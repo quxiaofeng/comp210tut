@@ -130,29 +130,29 @@
         \begin{frame}[c,shrink]{\subsecname{}.1}
             \textit{Select a theta notation from Table 4.3.3 for $3n^2+2n\lg{n}$.}\pause     
             \begin{align*}
-                0 \leq \lg{n}		&\leq n 	\hfill &for\ all\ n \geq 1\\
-                0 \leq 2n\lg{n} 	&\leq 2n^2 \hfill &for\ all\ n \geq 1
+                0 < \lg{n}		&\leq n 	\hfill &for\ all\ n \geq 1\\
+                0 < 2n\lg{n} 	&\leq 2n^2 \hfill &for\ all\ n \geq 1
             \end{align*}\pause
             Then the dominating term is\ $3n^2$.\\ \pause
             \begin{overprint}
             \onslide<4|handout:0>
             \begin{align*}
-            f(n)&= 3n^2+2n\lg{n} \geq 3n^2=C_1n^2,\ where\ C_1=3\\
-            f(n)&=O(n^2)
+            f(n)&= 3n^2+2n\lg{n} > 3n^2=C_1n^2,\ where\ C_1=3\\
+            f(n)&=\Omega(n^2)
             \end{align*}
             \onslide<5|handout:0>   
             \begin{align*}
-            f(n)&= 3n^2+2n\lg{n} \geq 3n^2=C_1n^2,\ where\ C_1=3\\
-            f(n)&=O(n^2)\\
+            f(n)&= 3n^2+2n\lg{n} > 3n^2=C_1n^2,\ where\ C_1=3\\
+            f(n)&=\Omega(n^2)\\
             f(n)&= 3n^2+2n\lg{n} \leq 3n^2+2n^2=C_2n^2,\ where\ C_2=5\\
-            f(n)&=\Omega(n^2)
+            f(n)&=O(n^2)
             \end{align*}
             \onslide<6->   
             \begin{align*}
-            f(n)	&= 3n^2+2n\lg{n} \geq 3n^2=C_1n^2,\ where\ C_1=3\\
-            f(n)	&= O(n^2)\\
-            f(n)	&= 3n^2+2n\lg{n} \leq 3n^2+2n^2=C_2n^2,\ where\ C_2=5\\
+            f(n)	&= 3n^2+2n\lg{n} > 3n^2=C_1n^2,\ where\ C_1=3\\
             f(n)	&= \Omega(n^2)\\
+            f(n)	&= 3n^2+2n\lg{n} \leq 3n^2+2n^2=C_2n^2,\ where\ C_2=5\\
+            f(n)	&= O(n^2)\\
             f(n)	&= \Theta(n^2)  \qed
             \end{align*}
             \end{overprint}
@@ -167,8 +167,8 @@
             \end{align*}\pause
             So for all $n \geq 3$,
             \begin{align*}
-                f(n) = \frac{(n+1)(n+3)}{n+1} &\geq n = C_1n = O(n)\\
-                                         f(n) &\leq 2n = C_2n = \Omega(n)
+                f(n) = \frac{(n+1)(n+3)}{n+1} &\geq n = C_1n = \Omega(n)\\
+                                         f(n) &\leq 2n = C_2n = O(n)
             \end{align*} \pause
             Then           
             \begin{align*}
@@ -214,7 +214,7 @@ for i = 1 to n
                 \lg{(n^k+c)} &\leq \lg(2n^k)\\
                 		  &=    k\lg{n}+\lg{2}\\
                 		  &\leq C_1\lg{n},\ where\ C_1= k+1,\ n\geq 2\\
-                		  &=    \Omega(\lg{n})
+                		  &=    O(\lg{n})
             \end{align*}
             \onslide<4|handout:0>
             \begin{align*}
@@ -222,10 +222,10 @@ for i = 1 to n
                 \lg{(n^k+c)} &\leq \lg(2n^k)\\
                 		  &=    k\lg{n}+\lg{2}\\
                 		  &\leq C_1\lg{n},\ where\ C_1= k+1,\ n\geq 2\\
-                		  &=    \Omega(\lg{n})\\
+                		  &=    O(\lg{n})\\
                 \lg{(n^k+c)} &\geq \lg(n^k) = k\lg{n}\\
                 		  &= C_2\lg{n},\ where\ C_2= k\\
-                		  &= O(\lg{n})
+                		  &= \Omega(\lg{n})
             \end{align*}
             \onslide<5>
             \begin{align*}
@@ -233,10 +233,10 @@ for i = 1 to n
                 \lg{(n^k+c)} &\leq \lg(2n^k)\\
                 		  &=    k\lg{n}+\lg{2}\\
                 		  &\leq C_1\lg{n},\ where\ C_1= k+1,\ n\geq 2\\
-                		  &=    \Omega(\lg{n})\\
+                		  &=    O(\lg{n})\\
                 \lg{(n^k+c)} &\geq \lg(n^k) = k\lg{n}\\
                 		  &= C_2\lg{n},\ where\ C_2= k\\
-                		  &= O(\lg{n})\\
+                		  &= \Omega(\lg{n})\\
                 \lg{(n^k+c)} &= \Theta(\lg{n}) \qed
             \end{align*}
             \end{overprint}
@@ -343,8 +343,8 @@ set?}\\\pause
             Symmetric and antisymmetric means \alert{no pairwise relation}\\$\;$\\\pause
             e.g. xRy doesn't exist if x $\neq$ y\\$\;$\\\pause
             For each element, two ways: self loop or not.\\$\;$\\\pause
-            $\Rightarrow$ n$\times$n by Multiplication principle\\$\;$\\\pause
-            So, there are $n^2$ summetric and antisymmetric relations on an n-element set. 
+            $\Rightarrow$ 2$\times$2$\times\cdots\times$2 by Multiplication principle\\$\;$\\\pause
+            So, there are $2^m$ summetric and antisymmetric relations on an n-element set. 
         \end{frame}
         
         
