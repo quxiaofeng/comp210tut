@@ -206,11 +206,11 @@ for i = 1 to n
             \begin{overprint}
             \onslide<2|handout:0>
             \begin{align*}
-                for\ all\ n \geq \lg{\frac{c}{k}},
+                for\ all\ n \geq c^{\frac{1}{k}},
             \end{align*}
             \onslide<3|handout:0>
             \begin{align*}
-                for\ all\ n \geq \lg{\frac{c}{k}},&\\
+                for\ all\ n \geq c^{\frac{1}{k}},&\\
                 \lg{(n^k+c)} &\leq \lg(2n^k)\\
                 		  &=    k\lg{n}+\lg{2}\\
                 		  &\leq C_1\lg{n},\ where\ C_1= k+1,\ n\geq 2\\
@@ -218,7 +218,7 @@ for i = 1 to n
             \end{align*}
             \onslide<4|handout:0>
             \begin{align*}
-                for\ all\ n \geq \lg{\frac{c}{k}},&\\
+                for\ all\ n \geq c^{\frac{1}{k}},&\\
                 \lg{(n^k+c)} &\leq \lg(2n^k)\\
                 		  &=    k\lg{n}+\lg{2}\\
                 		  &\leq C_1\lg{n},\ where\ C_1= k+1,\ n\geq 2\\
@@ -229,7 +229,7 @@ for i = 1 to n
             \end{align*}
             \onslide<5>
             \begin{align*}
-                for\ all\ n \geq \lg{\frac{c}{k}},&\\
+                for\ all\ n \geq c^{\frac{1}{k}},&\\
                 \lg{(n^k+c)} &\leq \lg(2n^k)\\
                 		  &=    k\lg{n}+\lg{2}\\
                 		  &\leq C_1\lg{n},\ where\ C_1= k+1,\ n\geq 2\\
@@ -344,8 +344,29 @@ set?}\\\pause
             e.g. xRy doesn't exist if x $\neq$ y\\$\;$\\\pause
             For each element, two ways: self loop or not.\\$\;$\\\pause
             $\Rightarrow$ 2$\times$2$\times\cdots\times$2 by Multiplication principle\\$\;$\\\pause
-            So, there are $2^m$ summetric and antisymmetric relations on an n-element set. 
+            So, there are $2^n$ summetric and antisymmetric relations on an n-element set.\qed
         \end{frame}
+        
+        
+        
+\subsection{Some Typo Errors}
+
+    \begin{frame}[c,shrink]{\subsecname}
+        \begin{itemize}
+        \item
+Problem 2: should be Page \alert{185} ; ... receives \alert{as} input ...
+        \item
+Problem 5: should be ... notation \alert{for} the number ...
+        \item
+Problme 7: the equation should be \[\alert{\sum^k_{i=0}}\lg(\frac{n}{2^i})=\Theta(\lg^2n)\]
+        \item
+Problme 8: there are \alert{two} problem 8s. Please mark \alert{the second problem 8} as \alert{problem 8.4}, for we can take the following numbers as they are now.
+        \item
+Problme 8.2: the equation shoul be \[...\ +\alert{\frac{1}{n-1}}.\]
+        \item
+Problme 12.4: shoul be $...\ \alert{y>z}.$ \qed
+        \end{itemize}
+    \end{frame}
         
         
         
