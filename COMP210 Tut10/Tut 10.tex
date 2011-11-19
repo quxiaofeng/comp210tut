@@ -1,0 +1,471 @@
+\documentclass[handout]{beamer}
+\usepackage{amssymb,latexsym,amssymb,amsmath,amsbsy,amsopn,amstext,upgreek}
+\usepackage{color,multicol}
+\usepackage{graphicx,wrapfig,fancybox,watermark,graphics}
+\usepackage{picins}
+%\usepackage{emp}
+%\usepackage{pstricks,pst-plot}
+\usepackage{pgf}
+\usepackage{movie15}
+\usepackage{hyperref}
+\usepackage{pdfpages}
+\usepackage{listings,bera}
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{60,179,113}
+\lstset{language=C,
+keywordstyle=\color{keywords},
+commentstyle=\color{comments}\emph}
+\hypersetup{
+    pdfpagemode=FullScreen, % show in full screen?
+}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+% reference entry
+\usepackage{bibentry, natbib}
+% reference style
+\bibliographystyle{IEEEtran} 
+%reference lib
+\nobibliography{refs}
+
+\usepackage[
+	%compress,
+	minimal,
+	%nonav,
+	red,
+	%gold,
+	%numbers,
+	%nologo,
+	polyu
+	]{beamerthemeHongKong}
+\usefonttheme[professionalfonts]{serif}
+
+\title[Tutorial 10]{Tutorial 10: Homework \\ The Rest of the Assignment 4}
+\author[COMP210]{Qu Xiaofeng\texorpdfstring{, Teaching Asistant\\\tiny{quxiaofeng.at.polyu@gmail.com, PQ702}}{}}
+\institute{COMP210\\Discrete Structure}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section*{Table of Contents}
+
+    \begin{frame}{\secname}
+        \tableofcontents
+    \end{frame}
+
+\AtBeginSubsection[] {
+    \begin{frame}<handout:0>{Outline}
+        \tableofcontents[current,currentsubsection]
+    \end{frame}
+}
+
+
+
+\section{Problems}
+
+
+
+    \subsection{Problem 2}
+    
+        \begin{frame}[c]{\subsecname}
+            \emph{Write an algorithm that receives as input the matrix of a relation R and tests whether R is transitive.}\\$\;$\\\pause
+            Let M be the n $\times$ n binary matrix representing the relation R,\\
+            namely, $M_{ij}=1$ if iRj and vice versa\\
+            R is transitive $\forall$i,j,k  if iRj, jRk then iRk\\
+            The basic idea to use matrix to test transitive ralation is as follows:\\
+            if M$\times$M contains no extra 1\rq{}s compared to M. Or M-M$\times$M has only zero or 1 entries.
+        \end{frame}
+        
+        \begin{frame}[c,shrink]{\subsecname\ cont.}          
+            \begin{algorithm}[H]
+                \caption {Transitivity Test}
+                \label{alg1}
+                \begin{algorithmic}[1]
+                    \REQUIRE Matrix M, Integer n
+                    \FOR{i $\leftarrow$ 1 \TO n}
+                    \FOR{j $\leftarrow$ 1 \TO n}
+                    \STATE $A_{ij} \leftarrow$ 0
+                    \FOR{k $\leftarrow$ 1 \TO n}
+                    \STATE $A_{ij} \leftarrow M_{ik} \AND M_{kj}$
+                    \ENDFOR
+                    \IF{$A_{ij} > 0$ \AND$M_{ij}=0$}
+                    \PRINT Not Transitive
+                    \RETURN
+                    \ENDIF
+                    \ENDFOR
+                    \ENDFOR
+                    \PRINT Transitive \qed
+                \end{algorithmic}
+            \end{algorithm}        
+        \end{frame}
+
+
+
+    \subsection{Problem 3}
+    
+        \begin{frame}[c]{\subsecname}
+            Write an algorithm that returns the index of the first occurrence of the value key in the sequence $s_1,\ldots,s_n$. If key is not in the sequence, the algorithm returns the value 0. Example: If the sequence is \\\centering{12 11 12 23} \\and key is 12, the algorithm returns the value 1. Please give the execution trace of your algorithm step-by-step for the input sequence 11 23 5 6, key = 4.
+        \end{frame}
+        
+        \begin{frame}[c,shrink]{\subsecname\ cont.}          
+            \begin{algorithm}[H]
+                \caption {Find Key}
+                \label{alg2}
+                \begin{algorithmic}[1]
+                    \REQUIRE Integer Array s, Integer key, Integer n
+                    \FOR{i $\leftarrow$ 1 \TO n}
+                    \IF{s(i) = key}
+                    \RETURN i
+                    \ENDIF
+                    \ENDFOR
+                    \RETURN 0 \qed
+                \end{algorithmic}                
+            \end{algorithm}        
+        \end{frame}
+        
+        \begin{frame}[c,shrink]{\subsecname\ cont.}          
+            \begin{algorithm}[H]
+                \caption {Trace}
+                \label{alg3}
+                \begin{algorithmic}[1]
+                    \REQUIRE Integer Array s = (11,23,5,6), Integer key = 4,\\ Integer n = 4
+                    \STATE $i \leftarrow 1$
+                    \STATE $s(i) = 11 \neq 4$
+                    \STATE $i \leftarrow 2$
+                    \STATE $s(i) = 23 \neq 4$
+                    \STATE $i \leftarrow 3$
+                    \STATE $s(i) = 5 \neq 4$
+                    \STATE $i \leftarrow 4$
+                    \STATE $s(i) = 6 \neq 4$
+                    \RETURN 0 \qed
+                \end{algorithmic}                
+            \end{algorithm}        
+        \end{frame}
+
+
+
+
+    \subsection{Problem 4}
+    
+        \begin{frame}[c,shrink]{Common Growth Functions}
+            \begin{table}[tp]%
+                \caption{Common Growth Functions\ (Table 4.3.3)}
+                \label{cgf}\centering%
+                \begin{tabular}{ll}
+                    \hline%\toprule%
+                    Theta Form             & Name         \\\hline%\otoprule%
+                    $\Theta(1)         $   & Constant     \\
+                    $\Theta(\lg\lg{n}) $   & Log log      \\
+                    $\Theta(\lg{n})    $   & Log          \\
+                    $\Theta(n)         $   & Linear       \\
+                    $\Theta(n\lg{n})   $   & n log n      \\
+                    $\Theta(n_2)       $   & Quadratic    \\
+                    $\Theta(n_3)       $   & Cubic        \\
+                    $\Theta(n_k)       $   & Polynomial   \\
+                    $\Theta(c_n)       $   & Exponential  \\
+                    $\Theta(n!)        $   & Factorial    \\\hline%\bottomrule
+                \end{tabular}
+            \end{table}
+        \end{frame}
+    
+        \begin{frame}[c]{\subsecname.2}
+            Select a theta notation from Table 4.3.3 for: $2\lg{n}+4n+3n\lg{n}$\\$\;$\\\pause
+            \[\lg n<n<3n\lg n\]
+            $\Rightarrow$ The dominating term should be $3n\lg{n}$\\
+            So\[f(n)=\Theta(n\lg{n})\] \qed
+        \end{frame}
+    
+        \begin{frame}[c]{\subsecname.4}
+            Select a theta notation from Table 4.3.3 for each express in the following:$\frac{(n^2+\lg{n})(n+1)}{n+n^2}$\\$\;$\\\pause
+            For all $n > 0$, simplify\\
+            \begin{align*}
+            f(n)&=\frac{(n^2+\lg{n})(n+1)}{n+n^2}\\
+            &=\frac{(n^2+\lg{n})(n+1)}{n(n+1)}\\
+            &=\frac{n^2+\lg{n}}{n}=n+\frac{\lg{n}}{n}\\
+            &=\Theta(n) &\qed
+            \end{align*}
+        \end{frame}
+    
+        \begin{frame}[c]{\subsecname.5}
+            Select a theta notation from Table 4.3.3 for each express in the following:$2+4+8+\cdots+2^n$\\\pause
+            \begin{align*}
+            f(n)&=2^1+2^2+2^3+\cdots+2^n\\
+            &=\sum_{i=1}^{n}2^i\\
+            &=\frac{2-2^{n+1}}{1-2}\\
+            &=2\times2^n-2\\
+            &=\Theta(2^n) &\qed
+            \end{align*}
+        \end{frame}
+    
+        \begin{frame}[c]{\subsecname.6}
+            Select a theta notation from Table 4.3.3 for each express in the following:$f(n)+g(n)$, where $f(n)=6n^3+2n^2+4$ and $g(n)=\Theta(n\lg{n})$.\\\pause
+            \begin{align*}
+            f(n)&=6n^3+2n^2+4\\
+            &=\Theta(n^3)\\
+            f(n)+g(n)&=\Theta(n^3)+\Theta(n\lg{n})\\
+            &=\Theta(n^3) &\qed
+            \end{align*}
+        \end{frame}
+
+
+
+    \subsection{Problem 5}
+    
+        \begin{frame}[fragile]{\subsecname.2}
+            Express in theta notation the number of times the statement x = x + 1 is
+executed.
+            \begin{lstlisting}
+j = n;
+while( j >= 1 ) {
+    for ( i = 1; i < j+1; i ++ ) {
+        x = x + 1;
+    }
+    j = floor( j/3 );
+}
+            \end{lstlisting}
+            where floor(x) = $\lfloor x\rfloor$.
+\end{frame} 
+
+    
+        \begin{frame}[c]{\subsecname.2 cont.}
+            \begin{align*}
+            1\leq\frac{n}{3^k}\leq3&\Rightarrow3^k\leq n\leq3^{k+1}  \Rightarrow\frac{1}{3^k}\geq\frac{1}{n}\geq\frac{1}{3^{k+1}}\\
+                                   &\Rightarrow \frac{1}{3n}\leq\frac{1}{3^{k+1}}\leq\frac{1}{n}
+            \end{align*}
+            \[f(n)=n+\frac{n}{3}+\ldots+\frac{n}{3^k}=n\cdot\frac{1-\frac{1}{3^{k+1}}}{1-\frac{1}{3}}\]
+            \[n\cdot\frac{1-\frac{1}{n}}{\frac{2}{3}}\leq f(n)\leq n\cdot\frac{1-\frac{1}{3n}}{\frac{2}{3}}\]
+            \[\frac{3n-3}{2}\leq f(n)\leq\frac{3n-1}{2}\]
+            So $f(n)=\Theta(n)$ \qed
+        \end{frame}
+    
+        \begin{frame}[fragile]{\subsecname.3}
+            Express in theta notation the number of times the statement x = x + 1 is
+executed.
+            \begin{lstlisting}
+i = 2;
+while( i < n ) {
+    i = i * i;
+    x = x + 1;
+}
+            \end{lstlisting}
+\end{frame}
+    
+        \begin{frame}[c]{\subsecname.3 cont.}
+            \begin{center}
+            \begin{tabular}{lll}
+                    \hline%\toprule%
+                    n               & i          & times   \\\hline%\otoprule%
+                    $3=2+1      $   & 2          & 1       \\
+                    $5=2^2+1    $   & 2,4        & 2       \\
+                    $17=2^4+1   $   & 2,4,16     & 3       \\
+                    $257=2^8+1  $   & 2,4,16,256 & 4       \\\hline%\bottomrule
+            \end{tabular}\pause
+            \end{center}
+            \[{2^2}^k = n \Rightarrow k=lg{lg{n}}=\Theta(\lg{\lg{n}}) \qed\]
+        \end{frame}
+
+
+
+\section{Problems cont.}
+
+    \subsection{Problem 7}
+    
+        \begin{frame}[c]{\subsecname}
+            Show that if n is a power of 2, say $n=2^k$, then $\sum^k_{i=0}\lg(\frac{n}{2^i})=\Theta(\lg^2{n})$.\\\pause
+            From the question, we get $k=\lg{n}$
+            \begin{align*}
+            &\sum_{i=0}^{k}\lg{\frac{n}{2^i}}\\
+            =&\sum_{i=0}^{k}(\lg{n}-i\lg{2})=\sum_{i=0}^{k}\lg{n}-\sum_{i=0}^{k}i\\
+            =&(\lg{n}+1)\lg{n}-\frac{k(k+1)}{2}\\
+            =&\frac{\lg{n}(\lg{n}+1)}{2}\\
+            =&\Theta(\lg^2{n}) &\qed
+            \end{align*}
+        \end{frame}
+
+
+
+    \subsection{Problem 8}
+    
+        \begin{frame}[c]{\subsecname.1}
+            Show, by consulting the figure, that $\frac{1}{2}+\frac{1}{3}+\ldots+\frac{1}{n}<\log_e{n}$\\
+%\setlength{\unitlength}{1cm}
+%\begin{picture}(6,4)(-1,-1)
+%\put(-0.5,0){\vector(1,0){5}}
+%\put(4.7,-0.1){$n$}
+%\put(0,-0.5){\vector(0,1){3}}
+%\put(-0.1,2.7){$f(n)$}
+%\multiput(0,1)(0.2,0){6}{\line(1,0){0.15}}
+%\multiput(0,0.5)(0.2,0){12}{\line(1,0){0.15}}
+%\multiput(0,0.33)(0.2,0){18}{\line(1,0){0.15}}
+%\multiput(1,0)(0,0.2){6}{\line(0,1){0.15}}
+%\multiput(2,0)(0,0.2){3}{\line(0,1){0.15}}
+%\multiput(3,0)(0,0.2){2}{\line(0,1){0.15}}
+%\put(4,2){$y=\frac{1}{x}$}
+%\qbezier(4,0.25)(0.5,0.5)(0.5,2)
+%\put(-1,-1){\circle*{0.2}}
+%\end{picture}
+        \end{frame}
+    
+        \begin{frame}[c]{\subsecname.2}
+            Show, by consulting the figure that $\log_e{n}<1+\frac{1}{2}+\ldots+\frac{1}{n}$
+        \end{frame}
+    
+        \begin{frame}[c]{\subsecname.3}
+            Use parts (a) and (b) to show that $1+\frac{1}{2}+\ldots+\frac{1}{n}=\Theta(\lg{n})$
+        \end{frame}
+    
+        \begin{frame}[c]{\subsecname.4}
+            A robot can take steps of 1 meter, 2 meters, or 3 meters. Write an algorithm to list all the ways that the robot can walk n meters.
+        \end{frame}
+        
+        \begin{frame}[c,shrink]{\subsecname.4\ cont.}          
+            \begin{algorithm}[H]
+                \caption {robotwalk}
+                \label{alg4}
+                \begin{algorithmic}[1]
+                    \REQUIRE Integer n, String s
+                    \IF{$n = 1$}
+                    \PRINT $s+''1 meter\ end''$
+                    \RETURN
+                    \ELSIF{$n = 2$}
+                    \PRINT $s+''1 meter\ ''+''1 meter\ end''$
+                    \PRINT $s+''2 meters\ end''$
+                    \RETURN
+                    \ELSIF{$n = 3$}
+                    \PRINT $s+''1 meter\ ''+''1 meter\ ''+''1 meter\ end''$
+                    \PRINT $s+''2 meters\ ''+''1 meter\ end''$
+                    \PRINT $s+''1 meter\ ''+''2 meters\ end''$
+                    \PRINT $s+''3 meters\ end''$
+                    \RETURN
+                    \ELSE
+                    \STATE $s\prime = s + ''1 meter\ ''$
+                    \STATE $robotwolk(n-1,\ s\prime)$
+                    \STATE $s\prime = s + ''2 meters\ ''$
+                    \STATE $robotwolk(n-2,\ s\prime)$
+                    \STATE $s\prime = s + ''3 meters\ ''$
+                    \STATE $robotwolk(n-3,\ s\prime)$
+                    \ENDIF \qed
+                \end{algorithmic}
+            \end{algorithm}        
+        \end{frame}
+
+
+
+    \subsection{Problem 9}
+    
+        \begin{frame}[c]{\subsecname}
+            How many different car license plates can be constructed if the licenses contain three letters followed by two digits if repetitions are allowed? if repetitions are not allowed.\\$\;$\\\pause
+            the number of letters = 26\\
+            the number of digits = 10\\\pause
+            repetitions allowed $26^3\cdot10^2=1757600$\\
+            repetitions not allowed $26\times25\times24\times10\times9=1404000$ \qed
+        \end{frame}
+
+
+
+    \subsection{Problem 11}
+    
+        \begin{frame}[c]{\subsecname}
+            A committee composed or Morgan, Tyler, Max, and Leslie is to select a president
+and secretary. How many selections are there in which Max is president or secretary.\\\pause
+		 \begin{itemize}
+		     \item
+if the president and the secretary can not be the same person
+                \begin{itemize}
+                    \item For Max is a president, 3 selections.
+                    \item For Max is a secretery, 3 selections.
+                \end{itemize}
+                6 selections in total.
+                \item
+if the president and the secretary can be the same person
+                \begin{itemize}
+                    \item For Max is a president, 3 selections.
+                    \item For Max is a secretery, 3 selections.
+                    \item For Max is both the president and the secretery, 1 selection.
+                \end{itemize}
+                7 selections in total. \qed
+		\end{itemize}
+        \end{frame}
+
+
+
+\section{Problems cont.}
+
+    \subsection{Problem 12}
+    
+        \begin{frame}[c]{\subsecname.1}
+            For integers from 5 to 200, inclusive. How many are greater than 101 and do not contain the digit 6?\\$\;$\\\pause
+            numbers 1xx do not contain digit 6: $9\times9$\\
+            + ``200'' - ``100'' - ``101''\\
+            81+1-2=80 \qed
+        \end{frame}
+    
+        \begin{frame}[c]{\subsecname.3}
+            For integers from 5 to 200, inclusive. How many have the digits in strictly increasing order? (Examples are 13, 147, 8)\\$\;$\\\pause          
+                \begin{tabular}{lcr}
+                     Single digit		& 5,6,7,8,9 	& 5 	\\
+                     Double digits (xx)
+                                & $ 1x\;\ x = 2 \rightarrow 9$ & \\
+                                & $ 2x\;\ x = 3 \rightarrow 9$ &  	\\
+                                & $ \Downarrow $ 	          &  	\\
+                                & $ 8x\;\ x = 9 $ 	          & $ 8 + 7 + \cdots + 1 = 36 $ 	\\
+                     Three digits (1xx)
+                                & $ 12x\;\ x = 3 \rightarrow 9$ & \\
+                                & $ 13x\;\ x = 4 \rightarrow 9$ &  	\\
+                                & $ \Downarrow $ 	          &  	\\
+                                & $ 18x\;\ x = 9 $ 	          & $ 7 + 6 + \cdots + 1 = 28 $ 	\\
+                \end{tabular}\\$\;$\\\pause
+                5+36+28=69 in total. \qed
+        \end{frame}
+    
+        \begin{frame}[c]{\subsecname.4}
+            For integers from 5 to 200, inclusive. How many are of the form xyz, where 0 $\neq$ x $<$ y and y $>$ z.\\$\;$\\\pause
+            \centering
+                \begin{tabular}{cr}
+                     $ 12z\;\ z = 0,1$               & 2 \\
+                     $ 13z\;\ z = 0 \rightarrow 2$   & 3 \\
+                     $ \Downarrow $                  &  \\
+                     $ 19z\;\ z = 0 \rightarrow 8$   & 9 
+                \end{tabular}\\$\;$\\\pause
+                $2+3+\cdots+9=44$ in total. \qed
+        \end{frame}
+
+
+
+    \subsection{Problem 13}
+    
+        \begin{frame}[c]{\subsecname}
+            How many terms are there in the expansion of (x + y)(a + b + c)(e + f + g)(h + i):\\$\;$\\\pause
+            \[2\times3\times3\times2=24\] \qed
+        \end{frame}
+
+
+
+    \subsection{Problem 14}
+    
+        \begin{frame}[c]{\subsecname}
+            How many reflexive, symmetric, and antisymmetric relations are there on an n-element set?\\$\;$\\\pause
+            \begin{itemize}
+            \item symmetric and antisymmetric relation: self loop or no relation
+            \item reflexive relation: every element has a self loop.
+            \item Only one relation that every element has a self-loop, and no others. \qed
+            \end{itemize}
+        \end{frame}
+        
+        
+        
+\section*{Q \& A}
+
+    \begin{frame}<handout:0>[c]{\secname}
+        \centerline{\Huge{Questions about the problems?}}
+    \end{frame}
+    
+    
+    
+\end{document}
+
+
+
