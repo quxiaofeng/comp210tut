@@ -1,0 +1,168 @@
+\documentclass[
+        %handout,
+        %draft
+        ]{beamer}
+\usepackage{amssymb,latexsym,amssymb,amsmath,amsbsy,amsopn,amstext,upgreek}
+\usepackage{color,multicol}
+\usepackage{graphicx,wrapfig,fancybox,watermark,graphics}
+\usepackage{picins}
+%\usepackage{emp}
+%\usepackage{pstricks,pst-plot}
+\usepackage{pgf}
+\usepackage{movie15}
+\usepackage{hyperref}
+\usepackage{pdfpages}
+\usepackage{listings,bera}
+\definecolor{keywords}{RGB}{255,0,90}
+\definecolor{comments}{RGB}{60,179,113}
+\lstset{language=C,
+keywordstyle=\color{keywords},
+commentstyle=\color{comments}\emph}
+\hypersetup{
+    pdfpagemode=FullScreen, % show in full screen?
+}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+% reference entry
+\usepackage{bibentry, natbib}
+% reference style
+\bibliographystyle{IEEEtran} 
+%reference lib
+\nobibliography{refs}
+
+\usepackage[
+	%compress,
+	%minimal,
+	%nonav,
+	red,
+	%gold,
+	%numbers,
+	%nologo,
+	polyu
+	]{beamerthemeHongKong}
+\usefonttheme[professionalfonts]{serif}
+
+\title[Tutorial 11]{Tutorial 11: Assignment 5}
+\author[COMP210]{Qu Xiaofeng\texorpdfstring{, Teaching Asistant\\\tiny{quxiaofeng.at.polyu@gmail.com, PQ702}}{}}
+\institute{COMP210\\Discrete Structure}
+\date{\today}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\section*{Table of Contents}
+
+    \begin{frame}[shrink]{\secname}
+        \tableofcontents
+    \end{frame}
+
+\AtBeginSubsection[] {
+    \begin{frame}<handout:0>[shrink]{Outline}
+        \tableofcontents[current,currentsubsection]
+    \end{frame}
+}
+
+
+
+\section{Problems}
+    \subsection{Problem 1}    
+        \begin{frame}[c]{\subsecname}
+            \emph{In how many ways can five distinct Martians and five distinct Jovians be seated at circular table?}\\\pause
+        \end{frame}
+
+
+
+    \subsection{Problem 3}
+        \begin{frame}[c]{\subsecname}
+            \emph{Find the number of integer solutions of $x_1 + x_2 + x_3 = 15$ subject to$ x_1, x_2, x_3 \geq 0$.}\\\pause
+        \end{frame}
+
+
+
+    \subsection{Problem 6.1}
+        \begin{frame}[c]{\subsecname}
+            \emph{Four microprocessors are randomly selected from 100 microprocessors among
+which 10 are defective. Find the probability of obtaining no defective microprocessors?}\\\pause
+        \end{frame}
+
+
+
+    \subsection{Problem 7.1}
+        \begin{frame}[c]{\subsecname}
+            \emph{Consider three persons who each randomly choose a locker among 12 consecutive
+lockers. What is the probability that the three lockers chosen are consecutive.}\\\pause
+        \end{frame}
+
+
+\section{Problems cont.}
+    \subsection{Problem 10.1}
+        \begin{frame}[c]{\subsecname}
+            \emph{State which graphs are bipartite graphs. If the graph is bipartite, specify the disjoint vertex sets}\\\pause
+        \end{frame}
+
+
+
+    \subsection{Problem 13.1}
+        \begin{frame}[c]{\subsecname}
+            \emph{Consider the graph in the figure. Find the degree for each vertex in the graph}\\\pause
+        \end{frame}
+
+
+
+    \subsection{Problem 14}
+        \begin{frame}[c]{\subsecname}
+            \emph{Show that the maximum number of edges in a simple, bipartite graph with n
+vertices is (n-1)(n-2)/2.}\\\pause
+        \end{frame}
+
+
+
+    \subsection{Problem 17.1}
+        \begin{frame}[c]{\subsecname}
+            \emph{Find the length of a shortest path and a shortest path between each pair of
+vertices in the weighted graph. 1) a,f.}\\\pause
+        \end{frame}
+
+
+\section{Problems cont.}
+    \subsection{Problem 19}
+        \begin{frame}[c]{\subsecname}
+            \emph{Show that a tree is a bipartite graph.}\\\pause
+        \end{frame}
+
+
+
+    \subsection{Problem 20}
+        \begin{frame}[c]{\subsecname}
+            \emph{Show that a graph G with n vertices and fewer than n􀀀1 edges is not connected.}\\\pause
+        \end{frame}
+
+
+
+    \subsection{Problem 23.1}
+        \begin{frame}[c]{\subsecname}
+            \emph{Find a spanning tree for each graph using depth-first and breadth-first search.}\\\pause
+        \end{frame}
+
+
+
+    \subsection{Problem 24}
+        \begin{frame}[c]{\subsecname}
+            \emph{Let $T$ and $T^\prime$ be two spanning trees of a connected graph $G$. Suppose that an edge $x$ is in $T$ but not in $T^\prime$. Show that there is an edge $y$ in $T^\prime$ but not in $T$ such that $( T - \{ x \} ) \cup \{ y \} $ and $(T^\prime - \{ y \} ) \cup \{ x \} $ are spanning trees of $G$.}\\\pause
+        \end{frame}
+    
+    
+    
+    \begin{frame}<handout:0>[c]{\secname}
+        \centerline{\Large{Questions about the problems?}}
+    \end{frame}
+    
+    
+    
+\end{document}
+
+
+
