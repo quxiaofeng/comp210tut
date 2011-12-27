@@ -1,4 +1,7 @@
-\documentclass[handout]{beamer}
+\documentclass[
+               handout,
+               %draft,
+               ]{beamer}
 \usepackage{amssymb,latexsym,amssymb,amsmath,amsbsy,amsopn,amstext,upgreek}
 \usepackage{color,multicol}
 \usepackage{graphicx,wrapfig,fancybox,watermark,graphics}
@@ -89,7 +92,7 @@ commentstyle=\color{comments}\emph}
                     \FOR{j $\leftarrow$ 1 \TO n}
                     \STATE $A_{ij} \leftarrow$ 0
                     \FOR{k $\leftarrow$ 1 \TO n}
-                    \STATE $A_{ij} \leftarrow M_{ik} \AND M_{kj}$
+                    \STATE $A_{ij} \leftarrow A_{ij} + M_{ik} \AND M_{kj}$
                     \ENDFOR
                     \IF{$A_{ij} > 0$ \AND$M_{ij}=0$}
                     \PRINT Not Transitive
@@ -291,26 +294,58 @@ while( i < n ) {
     
         \begin{frame}[c]{\subsecname.1}
             Show, by consulting the figure, that $\frac{1}{2}+\frac{1}{3}+\ldots+\frac{1}{n}<\log_e{n}$\\
-%\setlength{\unitlength}{1cm}
-%\begin{picture}(6,4)(-1,-1)
-%\put(-0.5,0){\vector(1,0){5}}
-%\put(4.7,-0.1){$n$}
-%\put(0,-0.5){\vector(0,1){3}}
-%\put(-0.1,2.7){$f(n)$}
-%\multiput(0,1)(0.2,0){6}{\line(1,0){0.15}}
-%\multiput(0,0.5)(0.2,0){12}{\line(1,0){0.15}}
-%\multiput(0,0.33)(0.2,0){18}{\line(1,0){0.15}}
-%\multiput(1,0)(0,0.2){6}{\line(0,1){0.15}}
-%\multiput(2,0)(0,0.2){3}{\line(0,1){0.15}}
-%\multiput(3,0)(0,0.2){2}{\line(0,1){0.15}}
-%\put(4,2){$y=\frac{1}{x}$}
-%\qbezier(4,0.25)(0.5,0.5)(0.5,2)
-%\put(-1,-1){\circle*{0.2}}
-%\end{picture}
+%            \begin{center}
+%            \setlength{\unitlength}{1cm}
+%            \begin{picture}(6,4)(-1,-1)
+%                \put(-0.5,0){\vector(1,0){5}}
+%                \put(4.7,-0.1){$n$}
+%                \put(0,-0.5){\vector(0,1){3}}
+%                \put(-0.1,2.7){$f(n)$}
+%                \multiput(0,1)(0.19,0){6}{\line(1,0){0.15}}
+%                \multiput(1,0)(0,0.19){6}{\line(0,1){0.15}}
+%                \multiput(0,0.5)(0.19,0){11}{\line(1,0){0.15}}
+%                \multiput(2,0)(0,0.19){3}{\line(0,1){0.15}}
+%                \multiput(0,0.33)(0.19,0){16}{\line(1,0){0.15}}
+%                \multiput(3,0)(0,0.19){2}{\line(0,1){0.15}}
+%                \put(4,2){$y=\frac{1}{x}$}
+%                \qbezier(0.5,2)(0,2.19)(1,1)
+%                \put(1,1){\circle*{.01}}
+%            \end{picture}
+%            \end{center}
         \end{frame}
     
         \begin{frame}[c]{\subsecname.2}
             Show, by consulting the figure that $\log_e{n}<1+\frac{1}{2}+\ldots+\frac{1}{n}$
+%            \setlength{\unitlength}{1cm}
+%\begin{picture}(4.3, 3.6)(-2, 0)
+%  \put(-2, 0){\vector(1, 0){4.4}}
+%  \put(2.45, -.05){$x$}
+%  \put(0, 0){\vector(0, 1){3.2}}
+%  \put(0, 3.35){\makebox(0, 0){$y$}}
+%  % qbezier P1=(0.0/0.0) m1=0.0 
+%  %         P2=(2.0/2.7622) m2=3.6269
+%  \qbezier(0.0, 0.0)(1.2384, 0.0)(2.0, 2.7622) 
+%  % qbezier P1=(0.0/0.0) m1=0.0 
+%  %         P2=(-2.0/2.7622) m2=-3.6269
+%  \qbezier(0.0, 0.0)(-1.2384, 0.0)(-2.0, 2.7622)
+%  \linethickness{.075mm}
+%  \multiput(-2, 0)(1, 0){5}{\line(0, 1){3}}
+%  \multiput(-2, 0)(0, 1){4}{\line(1, 0){4}}
+%  \color{red}
+%  \linethickness{.2mm}
+%  \put( .3, .12763){\line(1, 0){.4}}
+%  \put(.5, -.07237){\line(0, 1){.4}}
+%  \put(-.7, .12763){\line(1, 0){.4}}
+%  \put(-.5, -.07237){\line(0, 1){.4}}
+%  \put(.8,   .54308){\line(1, 0){.4}}
+%  \put(1,   .34308){\line(0, 1){.4}}
+%  \put(-1.2,  .54308){\line(1, 0){.4}}
+%  \put(-1,   .34308){\line(0, 1){.4}}
+%  \put(1.3,  1.35241){\line(1, 0){.4}}
+%  \put(1.5,  1.15241){\line(0, 1){.4}}
+%  \put(-1.7, 1.35241){\line(1, 0){.4}}
+%  \put(-1.5,  1.15241){\line(0, 1){.4}}
+%\end{picture}
         \end{frame}
     
         \begin{frame}[c]{\subsecname.3}
@@ -439,7 +474,7 @@ if the president and the secretary can be the same person
     
         \begin{frame}[c]{\subsecname}
             How many terms are there in the expansion of (x + y)(a + b + c)(e + f + g)(h + i):\\$\;$\\\pause
-            \[2\times3\times3\times2=24\] \qed
+            \[2\times3\times3\times2=36\] \qed
         \end{frame}
 
 
@@ -460,7 +495,7 @@ if the president and the secretary can be the same person
 \section*{Q \& A}
 
     \begin{frame}<handout:0>[c]{\secname}
-        \centerline{\Huge{Questions about the problems?}}
+        \centerline{\Large{Any Question?}}
     \end{frame}
     
     
